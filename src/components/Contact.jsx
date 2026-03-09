@@ -1,8 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Linkedin, Github } from 'lucide-react';
 
 const Contact = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        phone: '',
+        email: '',
+        message: ''
+    });
+    const [status, setStatus] = useState('idle'); // 'idle', 'loading', 'success', 'error'
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus('loading');
+
+        try {
+            // Web3Forms integration - using fetch API directly
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: JSON.stringify({
+                    access_key: "cbd967c9-4670-4e8e-b55d-cdb24acccc39",
+                    ...formData
+                }),
+            });
+
+            const result = await response.json();
+            if (result.success) {
+                setStatus('success');
+                setFormData({ name: '', phone: '', email: '', message: '' });
+                setTimeout(() => setStatus('idle'), 5000);
+            } else {
+                setStatus('error');
+                setTimeout(() => setStatus('idle'), 5000);
+            }
+        } catch (error) {
+            console.error(error);
+            setStatus('error');
+            setTimeout(() => setStatus('idle'), 5000);
+        }
+    };
+
     return (
         <section id="contact" className="py-32 relative z-10 px-6">
             <div className="max-w-7xl mx-auto">
@@ -82,31 +128,42 @@ const Contact = () => {
 
                             <h3 className="text-2xl font-bold text-white mb-8">SEND A MESSAGE</h3>
 
-                            <form className="space-y-6 relative z-10" onSubmit={(e) => e.preventDefault()}>
+                            <form className="space-y-6 relative z-10" onSubmit={handleSubmit}>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                     <div className="space-y-2">
                                         <label className="text-sm font-medium text-gray-400">Name <span className="text-teal-400">*</span></label>
-                                        <input type="text" placeholder="Your name" className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all" />
+                                        <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="Your name" className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all" />
                                     </div>
                                     <div className="space-y-2">
                                         <label className="text-sm font-medium text-gray-400">Phone No. <span className="text-teal-400">*</span></label>
-                                        <input type="tel" placeholder="+1 (555) 000-0000" className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all" />
+                                        <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required placeholder="+1 (555) 000-0000" className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all" />
                                     </div>
                                 </div>
 
                                 <div className="space-y-2">
-                                    <label className="text-sm font-medium text-gray-400">Email</label>
-                                    <input type="email" placeholder="your@email.com" className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all" />
+                                    <label className="text-sm font-medium text-gray-400">Email <span className="text-teal-400">*</span></label>
+                                    <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="your@email.com" className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all" />
                                 </div>
 
                                 <div className="space-y-2">
-                                    <label className="text-sm font-medium text-gray-400">Message</label>
-                                    <textarea rows="4" placeholder="How can I help you?" className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all resize-none"></textarea>
+                                    <label className="text-sm font-medium text-gray-400">Message <span className="text-teal-400">*</span></label>
+                                    <textarea name="message" value={formData.message} onChange={handleChange} required rows="4" placeholder="How can I help you?" className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all resize-none"></textarea>
                                 </div>
 
-                                <button type="submit" className="w-full py-4 rounded-xl bg-gradient-to-r from-purple-600 to-teal-500 text-white font-bold text-lg tracking-wide hover:shadow-[0_0_20px_rgba(45,212,191,0.4)] hover:scale-[1.02] transition-all">
-                                    Send Message
+                                <button type="submit" disabled={status === 'loading'} className="w-full py-4 rounded-xl bg-gradient-to-r from-purple-600 to-teal-500 text-white font-bold text-lg tracking-wide hover:shadow-[0_0_20px_rgba(45,212,191,0.4)] hover:scale-[1.02] transition-all disabled:opacity-70 disabled:cursor-not-allowed">
+                                    {status === 'loading' ? 'Sending...' : 'Send Message'}
                                 </button>
+
+                                {status === 'success' && (
+                                    <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-teal-400 mt-4 text-center font-medium">
+                                        Message sent successfully!
+                                    </motion.p>
+                                )}
+                                {status === 'error' && (
+                                    <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-red-500 mt-4 text-center font-medium">
+                                        Failed to send message. Please try again later.
+                                    </motion.p>
+                                )}
                             </form>
                         </div>
                     </motion.div>
