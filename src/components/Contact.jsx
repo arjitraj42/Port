@@ -31,7 +31,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <h4 className="text-white font-bold mb-1">Located at</h4>
-                                    <p className="text-gray-400 text-sm">Earth, Milky Way</p>
+                                    <p className="text-gray-400 text-sm">Patna, Bihar, India</p>
                                 </div>
                             </div>
 
@@ -41,7 +41,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <h4 className="text-white font-bold mb-1">Email me</h4>
-                                    <a href="mailto:contact@arjitraj.com" className="text-gray-400 text-sm hover:text-teal-400 transition-colors">contact@arjitraj.com</a>
+                                    <a href="mailto:arjitraj00@gmailcom" className="text-gray-400 text-sm hover:text-teal-400 transition-colors">arjitraj00@gmailcom</a>
                                 </div>
                             </div>
 
@@ -51,7 +51,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <h4 className="text-white font-bold mb-1">GitHub</h4>
-                                    <a href="https://github.com/arjit" target="_blank" rel="noreferrer" className="text-gray-400 text-sm hover:text-teal-400 transition-colors">github.com/arjit</a>
+                                    <a href="https://github.com/arjit42" target="_blank" rel="noreferrer" className="text-gray-400 text-sm hover:text-teal-400 transition-colors">github.com/arjit42</a>
                                 </div>
                             </div>
 
@@ -61,7 +61,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <h4 className="text-white font-bold mb-1">LinkedIn</h4>
-                                    <a href="https://linkedin.com/in/arjit" target="_blank" rel="noreferrer" className="text-gray-400 text-sm hover:text-teal-400 transition-colors">Arjit Raj</a>
+                                    <a href="https://www.linkedin.com/in/arjitraj42/" target="_blank" rel="noreferrer" className="text-gray-400 text-sm hover:text-teal-400 transition-colors">arjitraj42</a>
                                 </div>
                             </div>
                         </div>
