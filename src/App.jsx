@@ -4,9 +4,11 @@ import FloatingAvatar from './components/FloatingAvatar';
 import Hero from './components/Hero';
 import RibbonBanner from './components/RibbonBanner';
 import About from './components/About';
+import CVSection from './components/CVSection';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
-import Experience from './components/Experience';
+import Certificates from './components/Certificates';
+import Training from './components/Training';
 import Contact from './components/Contact';
 import IntroSequence from './components/IntroSequence';
 import CustomCursor from './components/CustomCursor';
@@ -33,8 +35,10 @@ function App() {
                     <RibbonBanner />
                     <About />
                     <Skills />
+                    <CVSection />
                     <Projects />
-                    <Experience />
+                    <Certificates />
+                    <Training />
                     <Contact />
                 </main>
             </div>

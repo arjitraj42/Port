@@ -1,7 +1,10 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import profileImg from '../assets/portfolio image.png';
 
 const Hero = () => {
+    const [isImageOpen, setIsImageOpen] = useState(false);
+
     return (
         <section id="home" className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden bg-[#070710]">
             <motion.div
@@ -40,6 +43,24 @@ const Hero = () => {
                         transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
                         className="w-full lg:w-1/2 flex flex-col justify-center text-left relative z-30"
                     >
+                        <motion.div
+                            className="mb-6 relative w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 rounded-full p-1 bg-gradient-to-tr from-[#8b5cf6] to-[#0ea5e9] shadow-[0_0_20px_rgba(139,92,246,0.3)] cursor-pointer group"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => setIsImageOpen(true)}
+                        >
+                            <img
+                                src={profileImg}
+                                alt="Arjit Raj"
+                                className="w-full h-full object-cover rounded-full border-2 border-[#070710] transition-opacity duration-300 group-hover:opacity-90"
+                            />
+                            {/* Hover overlay hint */}
+                            <div className="absolute inset-0 rounded-full flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                                </svg>
+                            </div>
+                        </motion.div>
                         <h1 className="text-[3.5rem] md:text-[5.5rem] lg:text-[6.5rem] font-bold text-white mb-2 tracking-tight leading-none drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)]">
                             ARJIT RAJ
                         </h1>
@@ -81,6 +102,49 @@ const Hero = () => {
 
                 </div>
             </motion.div>
+
+            {/* Image Modal Overlay */}
+            <AnimatePresence>
+                {isImageOpen && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 cursor-pointer"
+                        onClick={() => setIsImageOpen(false)}
+                    >
+                        {/* Close button */}
+                        <motion.button
+                            className="absolute top-6 right-6 text-white/70 hover:text-white p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-50"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setIsImageOpen(false);
+                            }}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </motion.button>
+
+                        <motion.div
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.8, opacity: 0 }}
+                            transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                            className="relative max-w-[33vw] min-w-[300px] aspect-square rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(139,92,246,0.5)] border border-white/10 cursor-default"
+                            onClick={(e) => e.stopPropagation()} // Prevent clicking the image from closing the modal
+                        >
+                            <img
+                                src={profileImg}
+                                alt="Arjit Raj - Full Size"
+                                className="w-full h-full object-cover"
+                            />
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     );
 };

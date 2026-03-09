@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Award, Calendar, Building2 } from 'lucide-react';
 
-const Experience = () => {
+const Certificates = () => {
     const [hoveredExp, setHoveredExp] = useState(null);
 
     const experiences = [
@@ -51,7 +51,7 @@ const Experience = () => {
     const hoveredExpData = experiences.find(exp => exp.id === hoveredExp);
 
     return (
-        <section id="experience" className="relative min-h-[800px] py-32 px-6 lg:px-16 flex items-center justify-center overflow-hidden bg-[#030303] border-t border-white/5">
+        <section id="certificate" className="relative min-h-[800px] py-32 px-6 lg:px-16 flex items-center justify-center overflow-hidden bg-[#030303] border-t border-white/5">
 
             {/* Minimal Background Glows */}
             <div className="absolute top-[20%] left-[10%] w-[400px] h-[400px] bg-purple-900/10 rounded-full blur-[120px] pointer-events-none"></div>
@@ -67,7 +67,7 @@ const Experience = () => {
                     className="text-center mb-24"
                 >
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 uppercase tracking-tight drop-shadow-2xl">
-                        Professional <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-purple-500">Experience</span>
+                        Professional <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-purple-500">Certificates</span>
                     </h2>
                     <div className="w-24 h-1.5 bg-gradient-to-r from-teal-400 to-purple-500 mx-auto mt-4 rounded-full shadow-[0_0_20px_rgba(45,212,191,0.5)]"></div>
                 </motion.div>
@@ -239,4 +239,4 @@ const Experience = () => {
     );
 };
 
-export default Experience;
+export default Certificates;
