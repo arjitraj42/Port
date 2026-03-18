@@ -3,18 +3,20 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Award, Calendar, Building2, GraduationCap, ArrowRight, X } from 'lucide-react';
 
+
+
 const Training = () => {
     const [selectedCert, setSelectedCert] = useState(null);
 
     const trainings = [
         {
             id: 1,
-            title: "Full Stack Web Development",
-            org: "Udemy",
-            duration: "6 Months",
-            description: "Comprehensive bootcamp covering MongoDB, Express, React, and Node.js. Built multiple real-world projects and RESTful APIs.",
+            title: "Master DSA with Java/C++",
+            org: "W3grads",
+            duration: "2 Months",
+            description: " Completed an intensive summer training program focused on strengthening Data Structures and Algorithms",
             certificate: {
-                image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=600"
+                image: "/certificateTraining.png"
             }
         }
 

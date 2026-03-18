@@ -4,28 +4,28 @@ import { Github, ExternalLink } from 'lucide-react';
 
 const projects = [
     {
-        title: "Cyber Defense Dashboard",
-        description: "A real-time network traffic analysis dashboard with threat detection algorithms.",
+        title: "Collab X",
+        description: "A platform to communicate and collaboration between startups and corporate teams.",
         tech: ["React", "Node.js", "Socket.io", "MongoDB"],
-        image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80",
-        github: "#",
-        live: "#"
+        image: "/colabx.png",
+        github: "https://github.com/arjitraj42/CollabX",
+        live: "https://collabx-frontend.onrender.com/"
     },
     {
-        title: "E-Commerce Platform",
-        description: "Full-stack scalable headless e-commerce solution with dynamic inventory.",
-        tech: ["MERN Stack", "Redux", "Stripe", "Tailwind"],
-        image: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80",
-        github: "#",
-        live: "#"
+        title: "EVENTIX",
+        description: "A ticket booking platform with dynamic inventory.",
+        tech: ["React", "Redux", "Razorpay", "Tailwind", "AWS"],
+        image: "/EVENTIX.png",
+        github: "https://github.com/arjitraj42/MovieTrix",
+        live: "https://eventplatform1.onrender.com/"
     },
     {
-        title: "Secure Chat Application",
+        title: "Chit-Chat",
         description: "End-to-end encrypted messaging platform for enterprise teams.",
-        tech: ["React", "Express", "WebRTC", "AES-256"],
-        image: "https://images.unsplash.com/photo-1614064641936-732739f3bb32?auto=format&fit=crop&q=80",
+        tech: ["React", "Express", "WebRTC", "AES-256", "Socket.io"],
+        image: "/Chit-Chat.png",
         github: "#",
-        live: "#"
+        live: "https://chit-chat-five-indol.vercel.app/"
     }
 ];
 
@@ -76,10 +76,10 @@ const ProjectCard = ({ project, index }) => {
                 </div>
 
                 <div className="flex gap-4 w-full">
-                    <a href={project.live} className="flex-1 py-3 rounded-xl bg-gradient-to-r from-red-500 to-red-600 text-white font-bold text-sm tracking-widest hover:scale-[1.03] transition-transform flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(34,211,238,0.4)]">
+                    <a href={project.live} target="_blank" rel="noopener noreferrer" className="flex-1 py-3 rounded-xl bg-gradient-to-r from-red-500 to-red-600 text-white font-bold text-sm tracking-widest hover:scale-[1.03] transition-transform flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(34,211,238,0.4)]">
                         <ExternalLink size={18} /> LIVE
                     </a>
-                    <a href={project.github} className="flex-1 py-3 rounded-xl bg-white/5 text-white border border-white/10 hover:bg-white/10 font-bold text-sm tracking-widest hover:scale-[1.03] transition-all flex items-center justify-center gap-2">
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex-1 py-3 rounded-xl bg-white/5 text-white border border-white/10 hover:bg-white/10 font-bold text-sm tracking-widest hover:scale-[1.03] transition-all flex items-center justify-center gap-2">
                         <Github size={18} /> SOURCE
                     </a>
                 </div>

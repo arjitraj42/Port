@@ -9,41 +9,41 @@ const Certificates = () => {
     const experiences = [
         {
             id: 1,
-            year: "2023 - Present",
-            role: "Full Stack Developer",
-            company: "Tech Solutions Inc.",
-            description: "Developing scalable MERN stack web applications and implementing secure authentication flows. Leading a team of 4 junior developers.",
+            year: "Nov’ 25",
+            role: "Cybersecurity Analyst Job Simulation ",
+            company: "Forage",
+            description: "Cybersecurity",
             certificate: {
-                title: "Advanced React Patterns",
-                org: "Frontend Masters",
-                date: "Nov 2023",
-                image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=600"
+                title: "Cybersecurity Analyst",
+                org: "Forage",
+                date: "Nov 2025",
+                image: "/Cybersec.png"
             }
         },
         {
             id: 2,
-            year: "2022 - 2023",
-            role: "Cyber Security Analyst",
-            company: "SecureNet Defense",
-            description: "Conducted vulnerability assessments and implemented network security protocols to protect internal cloud infrastructure assets.",
+            year: "Oct' 25",
+            role: "Privacy and Security in Online Social Media by NPTEL",
+            company: "NPTEL",
+            description: "A comprehensive course covering the technical and social aspects of protecting user data and mitigating security risks on modern social platforms.",
             certificate: {
-                title: "Certified Ethical Hacker (CEH)",
-                org: "EC-Council",
-                date: "Aug 2022",
-                image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=600"
+                title: "Privacy and Security in Online Social Media",
+                org: "NPTEL",
+                date: "Oct 2025",
+                image: "/NPTEL.png"
             }
         },
         {
             id: 3,
-            year: "2021 - 2022",
-            role: "Frontend Developer",
-            company: "Creative Web Agency",
+            year: "Sep' 23",
+            role: "Legacy Responsive Web Design V8.0",
+            company: "freeCodeCamp",
             description: "Built responsive, interactive user interfaces using React and modern CSS frameworks like Tailwind for high-profile clients.",
             certificate: {
-                title: "JavaScript Algorithms",
+                title: "Legacy Responsive Web Design V8.0",
                 org: "freeCodeCamp",
-                date: "Jan 2021",
-                image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=600"
+                date: "Sep 2023",
+                image: "/freecode.png"
             }
         }
     ];
@@ -177,7 +177,7 @@ const Certificates = () => {
                                     <img
                                         src={hoveredExpData.certificate.image}
                                         alt="Certificate"
-                                        className="w-full h-full object-cover opacity-80 mix-blend-screen"
+                                        className="w-full h-full object-contain p-4"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
 

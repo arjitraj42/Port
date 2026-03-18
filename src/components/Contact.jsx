@@ -21,17 +21,17 @@ const Contact = () => {
 
         try {
             // Web3Forms integration - using fetch API directly
-            const response = await fetch("https://api.web3forms.com/submit", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json",
-                },
-                body: JSON.stringify({
-                    access_key: "1a0b1e73-8c19-415c-88bd-335100abf1f5",
-                    ...formData
-                }),
-            });
+            const form = new FormData();
+form.append("access_key", "1a0b1e73-8c19-415c-88bd-335100abf1f5");
+form.append("name", formData.name);
+form.append("phone", formData.phone);
+form.append("email", formData.email);
+form.append("message", formData.message);
+
+const response = await fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    body: form
+});
 
             const result = await response.json();
             if (result.success) {
@@ -87,7 +87,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <h4 className="text-white font-bold mb-1">Email me</h4>
-                                    <a href="mailto:arjitraj00@gmailcom" className="text-gray-400 text-sm hover:text-teal-400 transition-colors">arjitraj00@gmailcom</a>
+                                    <a href="mailto:arjitraj00@gmail.com" className="text-gray-400 text-sm hover:text-teal-400 transition-colors">arjitraj00@gmail.com</a>
                                 </div>
                             </div>
 
